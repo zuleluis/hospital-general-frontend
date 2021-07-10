@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import AppBar from './views/AppBar';
+import MenuDrawer from './views/Drawer';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { useState } from 'react';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#A7C8F2',
+      dark: '#002884',
+      contrastText: '#000',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#5CC3C8',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleDrawer = () => {
+    setMenuOpen(!menuOpen);
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme}>
+        <AppBar data = "Hello" menuCallBack = {handleDrawer}/>
+        <MenuDrawer open={menuOpen} menuCallBack = {handleDrawer}/>
+      </ThemeProvider>
+       <h1>Mi primer web con React.js  {menuOpen? "True":"False"}</h1>
     </div>
   );
 }
