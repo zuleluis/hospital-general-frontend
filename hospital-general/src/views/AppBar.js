@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 function ButtonAppBar(props) {
   const classes = useStyles();
-  const data = props.data;
   
   return (
     <div className={classes.root}>
@@ -41,7 +40,7 @@ function ButtonAppBar(props) {
           </IconButton>
 					<img src="/img/ss.png" alt="logo" className={classes.logo}/>
 					<Typography variant="h6" className={classes.title}>
-						HOSPITAL GENERAL BOCA DEL RÍO {data}
+						HOSPITAL GENERAL BOCA DEL RÍO
           </Typography>
         </Toolbar>
       </AppBar>

@@ -1,6 +1,7 @@
 import AppBar from './views/AppBar';
 import MenuDrawer from './views/Drawer';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import Pacientes from './views/pacientes/Pacientes';
+import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 
 const theme = createTheme({
@@ -20,8 +21,26 @@ const theme = createTheme({
   },
 });
 
+const useStyles = makeStyles((theme) => ({
+	
+  root: {
+    flexGrow: 1,
+  },
+  main: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: theme.spacing(2)
+  },
+  mainDiv: {
+    maxWidth: 1100,
+    width: "100%",
+    marginBottom: theme.spacing(4)
+  },
+}));
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const classes = useStyles();
 
   const handleDrawer = () => {
     setMenuOpen(!menuOpen);
@@ -30,10 +49,16 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <AppBar data = "Hello" menuCallBack = {handleDrawer}/>
-        <MenuDrawer open={menuOpen} menuCallBack = {handleDrawer}/>
+        <header>
+          <AppBar menuCallBack = {handleDrawer}/>
+          <MenuDrawer open={menuOpen} menuCallBack = {handleDrawer}/>
+        </header>
+        <main className={classes.main}>
+          <div className={classes.mainDiv}>
+            <Pacientes/>
+          </div>
+        </main>
       </ThemeProvider>
-       <h1>Mi primer web con React.js  {menuOpen? "True":"False"}</h1>
     </div>
   );
 }

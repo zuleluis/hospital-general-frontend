@@ -14,6 +14,10 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const useStyles = makeStyles({
   list: {
     width: 250
+  },
+  img: {
+    marginRight: 30,
+    width: 25,
   }
 });
 
@@ -39,18 +43,21 @@ function TemporaryDrawer(props) {
     >
        <List>
         <ListItem button key="pacientes">
+          <img className={classes.img} alt="ico-pacientes" src="/img/paciente.svg" />
           <ListItemText primary="Pacientes"/>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem button key="doctor">
+        <img className={classes.img} alt="ico-medicos" src="/img/medico.svg" />
           <ListItemText primary="Doctores"/>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem button key="enfermera">
+          <img className={classes.img} width="25" alt="ico-enfermeras" src="/img/enfermera.svg" />
           <ListItemText primary="Enfermeras"/>
         </ListItem>
       </List>
