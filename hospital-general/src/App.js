@@ -1,8 +1,12 @@
 import AppBar from './views/AppBar';
 import MenuDrawer from './views/Drawer';
-import Pacientes from './views/pacientes/Pacientes';
+import MainRoutes from './views/MainRutas';
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  
+} from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -15,7 +19,7 @@ const theme = createTheme({
     secondary: {
       light: '#ff7961',
       main: '#5CC3C8',
-      dark: '#ba000d',
+      dark: '#3B7278',
       contrastText: '#000',
     },
   },
@@ -47,19 +51,21 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <header>
-          <AppBar menuCallBack = {handleDrawer}/>
-          <MenuDrawer open={menuOpen} menuCallBack = {handleDrawer}/>
-        </header>
-        <main className={classes.main}>
-          <div className={classes.mainDiv}>
-            <Pacientes/>
-          </div>
-        </main>
-      </ThemeProvider>
-    </div>
+    <Router>
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <header>
+            <AppBar menuCallBack = {handleDrawer}/>
+            <MenuDrawer open={menuOpen} menuCallBack = {handleDrawer}/>
+          </header>
+          <main className={classes.main}>
+            <div className={classes.mainDiv}>
+              <MainRoutes/>
+            </div>
+          </main>
+        </ThemeProvider>
+      </div>
+    </Router>
   );
 }
 

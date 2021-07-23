@@ -5,6 +5,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   center: {
@@ -19,9 +20,11 @@ function Seccion_historiaClinica() {
 
   return (
     <AccordionDetails className={styles.center}>
-      <Button variant="outlined" size="large" >
-        Abrir Historia Clinica
-      </Button>
+      <Link to="/pacientes/historia-clinica">
+        <Button variant="outlined" size="large" >
+          Abrir Historia Clinica
+        </Button>
+      </Link>
       <Button variant="outlined" size="large" startIcon={<GetAppRoundedIcon/>}>
         Abrir Historia Clinica
       </Button>

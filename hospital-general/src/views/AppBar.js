@@ -7,6 +7,7 @@ import {
     IconButton
     }from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
 		color: "#540D18",
+    textDecoration: "none",
   },
 	logo: {
 		height: 50,
@@ -39,9 +41,11 @@ function ButtonAppBar(props) {
             <MenuIcon />
           </IconButton>
 					<img src="/img/ss.png" alt="logo" className={classes.logo}/>
-					<Typography variant="h6" className={classes.title}>
-						HOSPITAL GENERAL BOCA DEL RÍO
-          </Typography>
+          <Link className={classes.title} to="/">
+            <Typography variant="h6" className={classes.title}>
+              HOSPITAL GENERAL BOCA DEL RÍO
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
