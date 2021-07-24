@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './styles';
 import { 
   Button, 
   TextField, 
@@ -12,41 +12,6 @@ import {
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
 import clsx from 'clsx';
 
-const useStyles = makeStyles((theme) => ({
-  fullWidth: {
-    width: "100%",
-  },
-  justify: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between"
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    marginTop: theme.spacing(2)
-  },
-  input30: {
-    width: "30%",
-  },
-  input50: {
-    width: "46%",
-  },
-  input60: {
-    width: "62%",
-  },
-  line: {
-    marginTop: theme.spacing(2),
-    color: theme.palette.secondary.dark,
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    paddingLeft: theme.spacing(2),
-  },
-  contenedorButton: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    justifyContent: "center",
-  }
-}));
 
 export default function Identificacion() {
   const [escolaridad, setEscolaridad] = React.useState('');
@@ -134,7 +99,7 @@ export default function Identificacion() {
         </div>
         <div className={style.contenedorButton}>
           <Button variant="contained" color="secondary"
-            type="submit"
+            type="submit" size="large"
             startIcon={<SaveOutlinedIcon/>}>
             GUARDAR
           </Button>

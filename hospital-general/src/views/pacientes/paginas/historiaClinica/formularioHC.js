@@ -7,6 +7,11 @@ import {
     Box
 } from "@material-ui/core";
 import Identificacion from './identificacion';
+import MotivoSolicitud from './motivoSolicitud';
+import HistoriaClinicaEF from './historiaClinica';
+import ProcedimientoQuirurgico from './procedimientoQ';
+import EstudioAnatomo from './estudioAnato';
+import Evolucion from './evolucion';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -83,20 +88,20 @@ export default function VerticalTabs() {
       <TabPanel className={classes.fullWidth} value={value} index={0}>
         <Identificacion/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
+      <TabPanel className={classes.fullWidth} value={value} index={1}>
+        <MotivoSolicitud/>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+      <TabPanel className={classes.fullWidth} value={value} index={2}>
+        <HistoriaClinicaEF/>
       </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
+      <TabPanel className={classes.fullWidth} value={value} index={3}>
+        <ProcedimientoQuirurgico/>
       </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
+      <TabPanel className={classes.fullWidth} value={value} index={4}>
+        <EstudioAnatomo/>
       </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
+      <TabPanel className={classes.fullWidth} value={value} index={5}>
+        <Evolucion/>
       </TabPanel>
     </div>
   );
