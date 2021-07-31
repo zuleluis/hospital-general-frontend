@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Pacientes from './pacientes/Pacientes';
 import PaginaHistoriaClinica from './pacientes/paginas/historiaClinica/historiaClinicaPage';
 import Home from './Home';
+import ListadoPacientes from './pacientes/paginas/listadoPacientes';
 
 function MainRoutes() {
 
@@ -10,9 +11,12 @@ function MainRoutes() {
     <Switch>
       <Route path="/pacientes">
         <Route exact path="/pacientes">
+          <ListadoPacientes/>
+        </Route>
+        <Route exact path="/pacientes/idpaciente">
           <Pacientes/>
         </Route>
-        <Route path="/pacientes/historia-clinica">
+        <Route path="/pacientes/idpaciente/historia-clinica">
           <PaginaHistoriaClinica/>
         </Route>
       </Route>
