@@ -26,23 +26,13 @@ const funcTable = {
   searchTable: (array, search) => {
 
     const expedienteFilter = array.filter(element => {
-      return element.noexpediente.toString().indexOf(search) !== -1;
+      return element.noexpediente.toString().indexOf(search) !== -1 ||
+        element.nombre.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+        element.apellido.toLowerCase().indexOf(search.toLowerCase()) !== -1 ||
+        element.edad.toString().indexOf(search) !== -1;
     });
 
-    const nombreFilter = array.filter(element => {
-      return element.nombre.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-    });
-
-    const apellidoFilter = array.filter(element => {
-      return element.apellido.toLowerCase().indexOf(search.toLowerCase()) !== -1 ;
-    });
-
-    const edadFilter = array.filter(element => {
-      return element.edad.toString().indexOf(search) !== -1 ;
-    });
-
-    const retorno = [...expedienteFilter, ...nombreFilter, ...apellidoFilter, ...edadFilter];
-    return retorno;
+    return expedienteFilter;
   }
 }
 
