@@ -8,11 +8,13 @@ import {
   TablePagination,
   TableRow,
   Paper,
+  IconButton,
 } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import EnhancedTableHead from '../../EncabezadoTabla';
 import funcTable from '../../funcionesTabla';
 import EnhancedTableToolbar from './listadoPacientesEncabezado';
+import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 
 function createData(noexpediente, nombre, apellido, edad, sexo) {
   return { noexpediente, nombre, apellido, edad, sexo };
@@ -37,7 +39,7 @@ const rows = [
 const headCells = [
   { id: 'noexpediente', numeric: false, label: 'No. de expediente' },
   { id: 'nombre', numeric: false, label: 'Nombre(s)' },
-  { id: 'apellido', numeric: false, label: 'Apellido' },
+  { id: 'apellido', numeric: false, label: 'Apellidos' },
   { id: 'edad', numeric: true, label: 'Edad' },
   { id: 'sexo', numeric: false, label: 'Sexo' },
 ];
@@ -49,9 +51,12 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: '100%',
     marginBottom: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   table: {
     minWidth: 750,
+    marginTop: theme.spacing(2),
+    border: "1px solid #ccc",
   },
   visuallyHidden: {
     border: 0,
@@ -72,6 +77,8 @@ export default function ListadoPacientes() {
   const [orderBy, setOrderBy] = React.useState('noexpediente');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [search, setSearch] = React.useState('');
+  const [data, setData] = React.useState(rows);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -88,12 +95,32 @@ export default function ListadoPacientes() {
     setPage(0);
   };
 
+  const handleEnterSearch = (event) => {
+    if (event.key === 'Enter') {
+      setData(funcTable.searchTable(rows,search)); 
+    }
+  }
+  
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  }
+
+  const handleCancelSearch = (event) => {
+    setData(rows);
+    setSearch("");
+  }
+
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar />
+        <EnhancedTableToolbar 
+          handleEnterSearch = {handleEnterSearch}
+          search = {search}
+          handleSearch = {handleSearch}
+          handleCancelSearch = {handleCancelSearch}
+          />
         <TableContainer>
           <Table
             className={classes.table}
@@ -102,21 +129,19 @@ export default function ListadoPacientes() {
             aria-label="enhanced table"
           >
             <EnhancedTableHead
-              classes={classes}              
+              classes={classes}
               order={order}
               orderBy={orderBy}
               headCells={headCells}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
             />
             <TableBody>
-              {funcTable.stableSort(rows, funcTable.getComparator(order, orderBy))
+              {funcTable.stableSort(data, funcTable.getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                    
                     <TableRow
                       hover
                       role="checkbox"
@@ -132,7 +157,9 @@ export default function ListadoPacientes() {
                         <TableCell >{row.sexo}</TableCell>
                         <TableCell>
                           <Link to="pacientes/idpaciente">
-                            Hola
+                            <IconButton aria-label="informacion">
+                              <AssignmentRoundedIcon />
+                            </IconButton>
                           </Link>
                           </TableCell>
                     </TableRow>
@@ -149,7 +176,7 @@ export default function ListadoPacientes() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={data.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
