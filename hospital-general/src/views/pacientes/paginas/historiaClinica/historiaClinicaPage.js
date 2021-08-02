@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
 import VerticalTabs from './formularioHC';
+import DatosPrincipales from './datosSuperior';
 
 const data = {
   nombre: "Marco Antonio Arcos Sánchez",
@@ -10,9 +10,6 @@ const data = {
 }
 
 const useStyles = makeStyles((theme) => ({
-  datosPrincipales: {
-    paddingLeft: theme.spacing(4), 
-  },
   form: {
     marginTop: theme.spacing(2),
     border: "1px solid black",
@@ -26,10 +23,7 @@ function PaginaHistoriaClinica() {
 
   return (
     <div>
-        <div className={styles.datosPrincipales}>
-          <Typography>Nombre del paciente: {data.nombre} </Typography>
-          <Typography>Edad: {data.edad} Años &nbsp;&nbsp;&nbsp;&nbsp; Sexo: {data.sexo}</Typography>
-        </div>
+        <DatosPrincipales data = {data}/>
         <div  className ={styles.form}>
           <VerticalTabs/>
         </div>

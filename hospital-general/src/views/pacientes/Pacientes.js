@@ -13,73 +13,83 @@ import CartaConsentimiento from "./secciones/cartaConsentimiento";
 import AvisoImportante from './secciones/avisoImportante';
 import EncuestaSeguimiento from './secciones/encuestaSeguimiento';
 import ExamenLaboratorio from './secciones/examenesLaboratorio';
+import DatosPrincipales from './paginas/historiaClinica/datosSuperior';
+
+const data = {
+  nombre: "Marco Antonio Arcos Sánchez",
+  edad: 21,
+  sexo: "Masculino",
+}
 
 function Pacientes() {
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <Accordion>
-        <AccordionSummary
-          className={classes.head}
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Historia Clinica</Typography>
-        </AccordionSummary>
-        <HistoriaClinica/>
-      </Accordion>
+      <div className={classes.contenedor}>
+        <DatosPrincipales data={data}/>
 
-      <Accordion>
-        <AccordionSummary
-          className={classes.head}
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Nota Médica</Typography>
-        </AccordionSummary>
-        <NotaMedica/>
-      </Accordion>
+        <Accordion className={classes.datoSuperior}>
+          <AccordionSummary
+            className={classes.head}
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography className={classes.heading}>Historia Clinica</Typography>
+          </AccordionSummary>
+          <HistoriaClinica/>
+        </Accordion>
 
-      <Accordion>
-        <AccordionSummary
-          className={classes.head}
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography className={classes.heading}>Carta de consetimiento</Typography>
-        </AccordionSummary>
-        <CartaConsentimiento/>
-      </Accordion>
+        <Accordion>
+          <AccordionSummary
+            className={classes.head}
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography className={classes.heading}>Nota Médica</Typography>
+          </AccordionSummary>
+          <NotaMedica/>
+        </Accordion>
 
-      <Accordion>
-        <AccordionSummary
-          className={classes.head}
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel4a-content"
-          id="panel4a-header"
-        >
-          <Typography className={classes.heading}>Aviso importante</Typography>
-        </AccordionSummary>
-        <AvisoImportante/>
-      </Accordion>
+        <Accordion>
+          <AccordionSummary
+            className={classes.head}
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel3a-content"
+            id="panel3a-header"
+          >
+            <Typography className={classes.heading}>Carta de consetimiento</Typography>
+          </AccordionSummary>
+          <CartaConsentimiento/>
+        </Accordion>
 
-      <Accordion>
-        <AccordionSummary
-          className={classes.head}
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel5a-content"
-          id="panel5a-header"
-        >
-          <Typography className={classes.heading}>Encuesta de seguimiento</Typography>
-        </AccordionSummary>
-        <EncuestaSeguimiento/>
-      </Accordion>
+        <Accordion>
+          <AccordionSummary
+            className={classes.head}
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel4a-content"
+            id="panel4a-header"
+          >
+            <Typography className={classes.heading}>Aviso importante</Typography>
+          </AccordionSummary>
+          <AvisoImportante/>
+        </Accordion>
 
-      <Accordion>
+        <Accordion>
+          <AccordionSummary
+            className={classes.head}
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel5a-content"
+            id="panel5a-header"
+          >
+            <Typography className={classes.heading}>Encuesta de seguimiento</Typography>
+          </AccordionSummary>
+          <EncuestaSeguimiento/>
+        </Accordion>
+
+        <Accordion>
         <AccordionSummary
           className={classes.head}
           expandIcon={<ExpandMoreIcon />}
@@ -90,7 +100,7 @@ function Pacientes() {
         </AccordionSummary>
         <ExamenLaboratorio/>
       </Accordion>
-
+      </div>
     </React.Fragment>
   );
 }

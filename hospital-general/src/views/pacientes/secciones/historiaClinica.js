@@ -20,13 +20,13 @@ function Seccion_historiaClinica() {
 
   return (
     <AccordionDetails className={styles.center}>
-      <Link to="/pacientes/historia-clinica">
+      <Link to="/pacientes/idpaciente/historia-clinica">
         <Button variant="outlined" size="large" >
           Abrir Historia Clinica
         </Button>
       </Link>
       <Button variant="outlined" size="large" startIcon={<GetAppRoundedIcon/>}>
-        Abrir Historia Clinica
+        Descargar Historia Clinica
       </Button>
     </AccordionDetails>
   );

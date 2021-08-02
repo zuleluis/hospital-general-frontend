@@ -5,6 +5,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   center: {
@@ -19,9 +20,11 @@ function Seccion_encuestaSeguimiento() {
 
   return (
     <AccordionDetails className={styles.center}>
-      <Button variant="outlined" size="large" >
-        Abrir Encuesta de Seguimiento
-      </Button>
+      <Link to="idpaciente/encuesta-seguimiento">
+        <Button variant="outlined" size="large" >
+          Abrir Encuesta de Seguimiento
+        </Button>
+      </Link>
       <Button variant="outlined" size="large" startIcon={<GetAppRoundedIcon/>}>
         Descargar Encuesta de Seguimiento
       </Button>

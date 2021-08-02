@@ -11,6 +11,15 @@ const useStyles = makeStyles((theme) => ({
     },
     head: {
       backgroundColor: "#5CC3C8",
+    },
+    contenedor: {
+      backgroundColor: "white",
+      border: "1px solid #ccc",
+      borderRadius: "5px",
+      padding: theme.spacing(4),
+    },
+    datoSuperior: {
+      marginTop: theme.spacing(4),
     }
   }));
 

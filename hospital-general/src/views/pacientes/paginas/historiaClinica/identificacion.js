@@ -1,5 +1,5 @@
 import React from 'react';
-import useStyles from './styles';
+import useStyles from './formularioStyles';
 import { 
   Button, 
   TextField, 
@@ -32,7 +32,7 @@ export default function Identificacion() {
           <TextField label="Nombre de paciente" name="nombre" required className={ clsx(style.input, style.input50)} variant="outlined" />
           <TextField label="Apellidos" name="apellidos" className={clsx(style.input, style.input50) } variant="outlined" required/>
           <TextField label="Fecha de nacimiento" name="fechaNacimiento" type="date" className={clsx(style.input, style.input30) } variant="outlined" required InputLabelProps={{shrink: true}}/>
-          <TextField label="Edad" name="edad" type="numer" className={clsx(style.input, style.input30) } variant="outlined" disabled InputLabelProps={{shrink: true}} />
+          <TextField label="Edad" name="edad" type="number" className={clsx(style.input, style.input30) } variant="outlined" disabled InputLabelProps={{shrink: true}} />
           <TextField label="IVS" name="IVS" className={clsx(style.input, style.input30) } variant="outlined"/>
 
           <FormControl variant="outlined" className={clsx(style.input, style.input30)}>

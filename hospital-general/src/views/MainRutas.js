@@ -4,6 +4,7 @@ import Pacientes from './pacientes/Pacientes';
 import PaginaHistoriaClinica from './pacientes/paginas/historiaClinica/historiaClinicaPage';
 import Home from './Home';
 import ListadoPacientes from './pacientes/paginas/listadoPacientes';
+import PaginaEncuestaSeguimiento from './pacientes/paginas/encuestaSeguimiento.js/encuestaMain';
 
 function MainRoutes() {
 
@@ -18,6 +19,9 @@ function MainRoutes() {
         </Route>
         <Route path="/pacientes/idpaciente/historia-clinica">
           <PaginaHistoriaClinica/>
+        </Route>
+        <Route exact path="/pacientes/idpaciente/encuesta-seguimiento">
+          <PaginaEncuestaSeguimiento/>
         </Route>
       </Route>
       <Route exact path="/">
