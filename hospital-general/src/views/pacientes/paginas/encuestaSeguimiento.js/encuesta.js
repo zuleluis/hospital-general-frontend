@@ -13,8 +13,13 @@ import PasoCuatro from './FourthStep';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    boxSizing: "border-box",
     width: '100%',
     backgroundColor: "white",
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
   }
 }));
 

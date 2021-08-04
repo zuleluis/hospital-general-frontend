@@ -14,6 +14,12 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
       marginTop: theme.spacing(2)
     },
+    input15: {
+      width: `calc(15% - ${theme.spacing(2)}px)`
+    },
+    input25: {
+      width: `calc(25% - ${theme.spacing(2)}px)`
+    },
     input30: {
       width: "30%",
     },
@@ -22,9 +28,6 @@ const useStyles = makeStyles((theme) => ({
     },
     input60: {
       width: "62%",
-    },
-    input15: {
-      width: `calc(15% - ${theme.spacing(2)}px)`
     },
     line: {
       marginTop: theme.spacing(2),
@@ -35,6 +38,12 @@ const useStyles = makeStyles((theme) => ({
     contenedorButton: {
       padding: theme.spacing(2),
       display: 'flex',
+      justifyContent: "center",
+    },
+    radioGroup: {
+      display: "block",
+    },
+    radioButton: {
       justifyContent: "center",
     }
   }));

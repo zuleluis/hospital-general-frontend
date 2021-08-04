@@ -2,8 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import {
   TextField,
-  Button,
-  Typography
+  Button
 } from '@material-ui/core';
 import useStyles from '../historiaClinica/formularioStyles';
 import SaveOutlined from '@material-ui/icons/SaveOutlined';
@@ -13,9 +12,6 @@ export default function PasoUno(props) {
 
   return (
     <div>      
-      <Typography variant="h6" align="center">
-        Encuesta de seguimiento - Paso 1
-      </Typography>
       <form method="Post">
         <div className={style.justify}>
           <TextField className={clsx(style.input, style.input60)} variant="outlined" required
