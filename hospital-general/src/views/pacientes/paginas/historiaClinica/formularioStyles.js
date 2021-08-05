@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
     },
     radioGroup: {
-      display: "block",
+      display: "block !important",
     },
     radioButton: {
       justifyContent: "center",
