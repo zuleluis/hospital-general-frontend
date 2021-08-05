@@ -7,7 +7,8 @@ import {
   FormControlLabel,
   Radio,
   FormControl,
-  FormLabel
+  FormLabel,
+  Fade
 } from '@material-ui/core';
 import useStyles from '../historiaClinica/formularioStyles';
 import SaveOutlined from '@material-ui/icons/SaveOutlined';
@@ -21,6 +22,7 @@ export default function PasoTres(props) {
 
   return (
     <div>
+      <Fade in>
       <form>
         <div className={style.justify}>
 
@@ -101,6 +103,7 @@ export default function PasoTres(props) {
         </div>
         
       </form>
+      </Fade>
     </div>
   );
 }

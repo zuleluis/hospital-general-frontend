@@ -2,7 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import {
   TextField,
-  Button
+  Button,
+  Fade
 } from '@material-ui/core';
 import useStyles from '../historiaClinica/formularioStyles';
 import SaveOutlined from '@material-ui/icons/SaveOutlined';
@@ -11,7 +12,8 @@ export default function PasoUno(props) {
   const style = useStyles();
 
   return (
-    <div>      
+    <div>
+      <Fade in >
       <form method="Post">
         <div className={style.justify}>
           <TextField className={clsx(style.input, style.input60)} variant="outlined" required
@@ -49,6 +51,7 @@ export default function PasoUno(props) {
         </div>
 
       </form>
+      </Fade>
     </div>
   );
 }

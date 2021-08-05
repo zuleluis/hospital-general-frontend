@@ -7,7 +7,8 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
-  RadioGroup
+  RadioGroup,
+  Fade
 } from '@material-ui/core';
 import useStyles from '../historiaClinica/formularioStyles';
 import SaveOutlined from '@material-ui/icons/SaveOutlined';
@@ -21,6 +22,7 @@ export default function PasoDos(props) {
 
   return (
     <div>
+      <Fade in>
       <form>
         <div className={style.justify}>
           <TextField label="¿Como se informó de la Vasectomía Sin Bisturí?"
@@ -94,6 +96,7 @@ export default function PasoDos(props) {
         </div>
         
       </form>
+      </Fade>
     </div>
   );
 }

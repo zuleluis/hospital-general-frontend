@@ -8,13 +8,11 @@ import {
   TablePagination,
   TableRow,
   Paper,
-  IconButton,
 } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import EnhancedTableHead from '../../EncabezadoTabla';
 import funcTable from '../../funcionesTabla';
 import EnhancedTableToolbar from './listadoPacientesEncabezado';
-import AssignmentRoundedIcon from '@material-ui/icons/AssignmentRounded';
 
 function createData(noexpediente, nombre, apellido, edad, sexo) {
   return { noexpediente, nombre, apellido, edad, sexo };
@@ -69,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
+  row: {
+    textDecoration: "none"
+  }
 }));
 
 export default function ListadoPacientes() {
@@ -143,10 +144,10 @@ export default function ListadoPacientes() {
 
                   return (
                     <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
+                      hover tabIndex={-1}
                       key={row.noexpediente}
+                      className={classes.row}
+                      component={Link} to="pacientes/idpaciente"
                     >
                         <TableCell component="th" id={labelId} scope="row">
                           {row.noexpediente}
@@ -155,13 +156,6 @@ export default function ListadoPacientes() {
                         <TableCell >{row.apellido}</TableCell>
                         <TableCell align="right">{row.edad}</TableCell>
                         <TableCell >{row.sexo}</TableCell>
-                        <TableCell>
-                          <Link to="pacientes/idpaciente">
-                            <IconButton aria-label="informacion">
-                              <AssignmentRoundedIcon />
-                            </IconButton>
-                          </Link>
-                          </TableCell>
                     </TableRow>
                   );
                 })}

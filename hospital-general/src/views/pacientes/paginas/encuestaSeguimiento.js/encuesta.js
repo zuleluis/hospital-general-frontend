@@ -78,7 +78,7 @@ export default function EncuestaLinearStepper() {
         ))}
       </Stepper>
       <div>
-        { activeStep === 0 && <PasoUno handleComplete={handleComplete}/> }
+        { activeStep === 0 && <PasoUno handleComplete={handleComplete}/>}
         { activeStep === 1 && <PasoDos handleComplete={handleComplete}/> }
         { activeStep === 2 && <PasoTres handleComplete={handleComplete}/> }
         { allStepsCompleted() && activeStep === 3 && <PasoCuatro/> }

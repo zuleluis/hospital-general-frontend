@@ -49,9 +49,6 @@ export default function EnhancedTableHead(props) {
               </TableSortLabel>
             </TableCell2>
           ))}
-            <TableCell>
-            </TableCell>
-            
         </TableRow>
       </TableHead2>
     );

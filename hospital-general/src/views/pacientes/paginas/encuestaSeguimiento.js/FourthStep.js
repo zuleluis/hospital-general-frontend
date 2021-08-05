@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Button, 
-  Typography 
+  Typography,
+  Fade
 } from '@material-ui/core';
 import GetApp from '@material-ui/icons/GetApp';
 
@@ -33,7 +34,9 @@ export default function PasoCuatro() {
   const styles = useStyles();
 
   return (
-    <div>      
+    <Fade in>
+    <div>
+      
       <Typography variant="h6" align="center" className={styles.text}>
         ¡Encuesta finalizada con éxito!
       </Typography>
@@ -44,10 +47,11 @@ export default function PasoCuatro() {
       </div>
       
       <div className={styles.buttonContent}>
-          <Button variant="contained" color="secondary" size="large">
-            Descargar
-          </Button>
-        </div>
+        <Button variant="contained" color="secondary" size="large">
+          Descargar
+        </Button>
+      </div>
     </div>
+    </Fade>
   );
 }
