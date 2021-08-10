@@ -1,0 +1,27 @@
+{
+  "name": "hospital-general-backend",
+  "version": "1.0.0",
+  "description": "Hospital general boca del rio",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoAntonioAS17/Hospital-General-Boca.git"
+  },
+  "author": "Marco Antonio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcoAntonioAS17/Hospital-General-Boca/issues"
+  },
+  "homepage": "https://github.com/MarcoAntonioAS17/Hospital-General-Boca#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

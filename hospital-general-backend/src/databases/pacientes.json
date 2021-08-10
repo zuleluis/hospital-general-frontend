@@ -1,0 +1,12 @@
+[
+  {
+    "NoExpediente": 190120319,
+    "Nombre": "Marco Antonio",
+    "Apellidos": "Arcos Sanchez",
+    "FechaNacimiento": "1999-08-03",
+    "Sexo": "Masculino",
+    "IdEscolaridad": 1,
+    "IdOcupacion": 2,
+    "IdReligion": 1
+  }
+]

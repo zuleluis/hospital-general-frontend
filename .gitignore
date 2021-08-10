@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+hospital-general-backend/node_modules
 hospital-general/node_modules
 hospital-general//.pnp
 hospital-general/.pnp.js
