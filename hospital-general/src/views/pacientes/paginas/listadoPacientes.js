@@ -13,26 +13,8 @@ import { Link } from "react-router-dom";
 import EnhancedTableHead from '../../EncabezadoTabla';
 import funcTable from '../../funcionesTabla';
 import EnhancedTableToolbar from './listadoPacientesEncabezado';
-
-function createData(noexpediente, nombre, apellido, edad, sexo) {
-  return { noexpediente, nombre, apellido, edad, sexo };
-}
-
-const rows = [
-  createData(4913018, "VICTOR", "BARROSO BUSTO", 72,"Masculino"),
-  createData(6592700, "RUBEN", "SANCHO GASCO", 51, "Masculino"),
-  createData(9994891, "ALBERT", "LEON MORAN", 24, "Masculino"),
-  createData(7281472, "ALBERTO", "PORTILLA REVUELTA", 24, "Masculino"),
-  createData(3085173, "JOSE FRANCISCO", "TORRAS CLAVERO", 49, "Masculino"),
-  createData(2150573, "ROBERTO", "SOUSA ALMENARA", 42, "Masculino"),
-  createData(7317522, "VICTOR MANUEL", "ODRIOZOLA HEREDIA", 37, "Masculino"),
-  createData(3802921, "ALFONSO", "LAGUNA CORONADO", 53, "Masculino"),
-  createData(1642961, "JUAN MANUEL", "GARCIA TEIJEIRO", 65, "Masculino"),
-  createData(5451605, "RUBEN", "SALGUEIRO BARRADO", 23, "Masculino"),
-  createData(3359326, "LUIS MIGUEL", "PENA FERRERA", 20, "Masculino"),
-  createData(7677589, "CRISTOBAL", "MOLLA ROJO", 29, "Masculino"),
-  createData(6702870, "IGNACIO", "CUADRADO FALCON", 63, "Masculino"),
-];
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const headCells = [
   { id: 'noexpediente', numeric: false, label: 'No. de expediente' },
@@ -78,8 +60,23 @@ export default function ListadoPacientes() {
   const [orderBy, setOrderBy] = React.useState('noexpediente');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [search, setSearch] = React.useState('');
-  const [data, setData] = React.useState(rows);
+  const [search, setSearch] = React.useState('');  
+  
+  const [pacientes, setPacientes] = useState([]);
+
+  useEffect(() => {
+    fetch("/pacientes")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setPacientes(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },[]);
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -98,7 +95,7 @@ export default function ListadoPacientes() {
 
   const handleEnterSearch = (event) => {
     if (event.key === 'Enter') {
-      setData(funcTable.searchTable(rows,search)); 
+      setPacientes(funcTable.searchTable(pacientes,search)); 
     }
   }
   
@@ -107,11 +104,11 @@ export default function ListadoPacientes() {
   }
 
   const handleCancelSearch = (event) => {
-    setData(rows);
+    setPacientes([]);
     setSearch("");
   }
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, pacientes.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
@@ -137,7 +134,7 @@ export default function ListadoPacientes() {
               onRequestSort={handleRequestSort}
             />
             <TableBody>
-              {funcTable.stableSort(data, funcTable.getComparator(order, orderBy))
+              {funcTable.stableSort(pacientes, funcTable.getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
@@ -150,12 +147,12 @@ export default function ListadoPacientes() {
                       component={Link} to="pacientes/idpaciente"
                     >
                         <TableCell component="th" id={labelId} scope="row">
-                          {row.noexpediente}
+                          {row.NoExpediente}
                         </TableCell>
-                        <TableCell >{row.nombre}</TableCell>
-                        <TableCell >{row.apellido}</TableCell>
-                        <TableCell align="right">{row.edad}</TableCell>
-                        <TableCell >{row.sexo}</TableCell>
+                        <TableCell >{row.Nombre}</TableCell>
+                        <TableCell >{row.Apellidos}</TableCell>
+                        <TableCell align="right">{row.Edad}</TableCell>
+                        <TableCell >{row.Sexo}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -170,7 +167,7 @@ export default function ListadoPacientes() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={data.length}
+          count={pacientes.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
