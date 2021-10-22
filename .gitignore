@@ -1,24 +1,23 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-hospital-general-backend/node_modules
-hospital-general/node_modules
-hospital-general//.pnp
-hospital-general/.pnp.js
+/node_modules
+/.pnp
+.pnp.js
 
 # testing
-hospital-general/coverage
+/coverage
 
 # production
-hospital-general/build
+/build
 
 # misc
-hospital-general/.DS_Store
-hospital-general/.env.local
-hospital-general/.env.development.local
-hospital-general/.env.test.local
-hospital-general/.env.production.local
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-hospital-general/npm-debug.log*
-hospital-general/yarn-debug.log*
-hospital-general/yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
